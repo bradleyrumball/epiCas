@@ -1,0 +1,55 @@
+!!!
+%html{ html_attrs('en-GB') }
+  %head
+    %title= @application_title
+    = favicon_link_tag
+    %link{ href: '/apple-touch-icon.png', rel: 'apple-touch-icon' }
+    
+    :css
+      @import url(https://www.shef.ac.uk/sheffield/road/Classic/article/0/shared/css/general.css?v=2); 
+      @import url(https://www.shef.ac.uk/sheffield/road/Classic/article/0/shared/css/blue.css?v=2); 
+      #header { background: #E0ECFF; border-bottom: 5px solid #6694E3; } 
+      #museonly { margin-top: 40px; /*padding-left:235px;*/ padding-left: 10%; padding-right: 10%; font-size: 120%; } 
+      #header #pageTitle { color: #000; font-size: 3em }
+
+  %body
+    #header
+      %table
+        %tr
+          %td#headerLeft
+            #headerCrest
+              %img{ :src => 'https://www.shef.ac.uk/sheffield/road/Classic/article/0/shared/images/crest-l.gif', :alt => 'The University of Sheffield' }
+
+    #museonly
+      %h2
+        You have logged out of #{@application_title}.
+      
+      %p
+        = link_to "Log back into #{@application_title}", new_user_session_path
+
+      %table{ :style => 'width: 100%; margin-top: 35px;' }
+        %tr
+          %td{ :style => 'width: 50%; vertical-align: top; padding: 10px; background-color: #efefef;' }
+          
+            %h3 Log out of #{@cas_title}
+            %p
+              Although you have logged out of #{@application_title}, you are probably still logged into #{@cas_title}.
+              
+            %p
+              If you have finished accessing services on this device then for security reasons you should also log out of #{@cas_title}, particularly if this is a shared or public device.
+            
+            %p
+              = link_to "Log out of #{@cas_title}", cas_logout_url
+
+          %td{ :style => 'width: 50%; vertical-align: top; padding: 10px; background-color: #efefef;' }
+          
+            %h3 Continue using #{@cas_title}
+          
+            %p If you are still accessing services on this device then you can continue to use your #{@cas_title} session and there is no need to log out now.
+          
+            %p You can close this tab and carry on.
+
+    #footer
+      #footerLeft
+        &copy; #{Date.today.year} 
+        = link_to "epiGenesys", "http://www.epigenesys.co.uk", title: "epiGenesys - a University of Sheffield company", target: '_blank'
