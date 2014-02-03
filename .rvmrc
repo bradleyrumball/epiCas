@@ -1,1 +1,1 @@
-rvm use 1.9.2@epi_cas --create
+rvm use 1.9.3@epi_cas --create

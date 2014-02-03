@@ -47,16 +47,16 @@ describe "EpiCas" do
       end
     end
     
-    describe "cas_logout_url" do
+    describe "cas_log_out_url" do
       specify "The default is ''https://some.url/cas/logout''" do
-        EpiCas.configuration.cas_logout_url.should == 'https://some.url/cas/logout'
+        EpiCas.configuration.cas_log_out_url.should == 'https://some.url/cas/logout'
       end
       
       specify "It can be overridden" do
         EpiCas.configure do |config|
-          config.cas_logout_url = 'Overridden'
+          config.cas_log_out_url = 'Overridden'
         end
-        EpiCas.configuration.cas_logout_url.should == 'Overridden'
+        EpiCas.configuration.cas_log_out_url.should == 'Overridden'
       end
     end
     

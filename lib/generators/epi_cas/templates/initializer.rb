@@ -8,5 +8,5 @@ EpiCas.configure do |config|
   
   # The urls for the CAS services you are using
   config.cas_base_url   = 'https://some.url/cas'
-  config.cas_logout_url = 'https://some.url/cas/logout'
+  config.cas_log_out_url = 'https://some.url/cas/logout'
 end

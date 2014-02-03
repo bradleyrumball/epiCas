@@ -17,13 +17,13 @@ module EpiCas
     attr_accessor :application_title
     attr_accessor :cas_title
     attr_accessor :cas_base_url
-    attr_accessor :cas_logout_url
+    attr_accessor :cas_log_out_url
   
     def initialize
       @application_title = "Application"
       @cas_title         = "Online Services"
       @cas_base_url      = 'https://some.url/cas'
-      @cas_logout_url    = 'https://some.url/cas/logout'
+      @cas_log_out_url    = 'https://some.url/cas/logout'
     end
   end
   
