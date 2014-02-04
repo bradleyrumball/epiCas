@@ -1,0 +1,30 @@
+defaults: &defaults
+  # Allows switching between CAS and LDAP auth per environment
+  auth_method:            cas
+  
+  # The title of your application, shown in the title of the log out page
+  cas_application_title: 'Application'
+  
+  # The title of the CAS service, shown in the log out link on the log out page: "Log out of #{@cas_title}"
+  cas_title:             'Online Services'
+  
+  # The urls for the CAS services you are using
+  cas_base_url:          'https://some.url/cas'
+  cas_logout_url:        'https://some.url/cas/logout'
+  app_logout_url:        'https://localhost:3000/app_logout'
+
+development:
+  <<: *defaults
+  auth_method: :ldap
+
+test:
+  <<: *defaults
+  auth_method: :ldap
+
+demo:
+  <<: *defaults
+  auth_method: :ldap 
+
+production:
+  <<: *defaults
+  auth_method: :cas

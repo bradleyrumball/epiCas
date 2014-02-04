@@ -1,30 +1,10 @@
+require "epi_cas/devise_helper"
+require "epi_cas/settings"
+
+require "epi_cas/user_authentications/ldap_info"
+require "epi_cas/user_authentications/verifier"
+require "epi_cas/user_authentications/whitelist_checker"
+
 module EpiCas
-  
-  class << self
-    attr_accessor :configuration
-  end
-  
-  # Allow configuration via config/initializers/epi_cas.rb for example:
-  # EpiCas.configue do |config| 
-  #   config.application_title = 'My Lovely App'
-  # end
-  def self.configure
-    self.configuration ||= Configuation.new
-    yield configuration
-  end
-  
-  class Configuation
-    attr_accessor :application_title
-    attr_accessor :cas_title
-    attr_accessor :cas_base_url
-    attr_accessor :cas_log_out_url
-  
-    def initialize
-      @application_title = "Application"
-      @cas_title         = "Online Services"
-      @cas_base_url      = 'https://some.url/cas'
-      @cas_log_out_url    = 'https://some.url/cas/logout'
-    end
-  end
   
 end

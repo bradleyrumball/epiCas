@@ -1,3 +1,3 @@
-        class User < ActiveRecord::Base
-extend EpiCas::DeviseHelper          devise :database_authenticatable
-        end
+class User < ActiveRecord::Base
+extend EpiCas::DeviseHelper  devise :"#{auth_method}_authenticatable"
+end
