@@ -27,7 +27,7 @@ module EpiCas
         end
       
         def whitelist_checker(klass = WhitelistChecker)
-          @whitelist ||= klass.new(ldap_info.dn)
+          @whitelist ||= klass.new(ldap_info.dn, ldap_info.uid)
         end
     end
   end

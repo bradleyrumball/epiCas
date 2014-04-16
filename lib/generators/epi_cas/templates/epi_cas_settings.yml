@@ -12,6 +12,10 @@ defaults: &defaults
   cas_base_url:          'https://some.url/cas'
   cas_logout_url:        'https://some.url/cas/logout'
   app_logout_url:        'https://localhost:3000/app_logout'
+  
+  username_whitelist:
+    - user1
+    - user2
 
 development:
   <<: *defaults
