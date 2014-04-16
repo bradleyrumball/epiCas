@@ -13,9 +13,34 @@ defaults: &defaults
   cas_logout_url:        'https://some.url/cas/logout'
   app_logout_url:        'https://localhost:3000/app_logout'
   
+  # If users in the following groups exist in the app (and CAS), or don't exist in the app but their group is specified in
+  # 'groups_allowed_to_be_created' then they will be allowed to log in.
+  # Comment/uncomment as necessary.
+  groups_allowed_to_log_in: 
+    - staff
+    - staff_honorary
+    - staff_visiting
+    - external
+    # - student_pg_research
+    # - student_pg_taught
+    # - student_undergraduate
+
+  # If users in the following groups don't already exist in the app, they will be allowed to log in and created automatically. 
+  # Comment/uncomment as necessary.
+  groups_allowed_to_be_created: 
+    - staff
+    - staff_honorary
+    - staff_visiting
+    - external
+    # - student_pg_research
+    # - student_pg_taught
+    # - student_undergraduate
+
+  # Usernames allowed access regardless of their group and whether or not they are already in the app.
   username_whitelist:
-    - user1
-    - user2
+    # - user1
+    # - user2
+    # - etc
 
 development:
   <<: *defaults

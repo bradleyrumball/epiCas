@@ -1,7 +1,7 @@
 module EpiCas
   module UserAuthentications
     class WhitelistChecker < Struct.new(:raw_dn, :uid)
-      USER_TYPES = {
+      USER_GROUPS = {
         'ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                                 => :staff,
         'ou=honorary,ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                     => :staff_honorary,
         'ou=visiting,ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                     => :staff_visiting,
@@ -12,22 +12,28 @@ module EpiCas
       } 
     
       def allow_authentication?
-        username_whitelisted? ||
-          [:staff, :staff_honorary, :staff_visiting, :external].member? type
+        username_whitelisted? || groups_allowed_to_log_in.member?(group)
       end
     
       def allow_creation?
-        username_whitelisted? ||
-          [:staff, :staff_honorary, :staff_visiting, :external].member? type
+        username_whitelisted? || groups_allowed_to_be_created.member?(group)
       end
     
       private
+        def groups_allowed_to_log_in(setting_class = EpiCas::Settings)
+          @groups_allowed_to_log_in ||= setting_class.groups_allowed_to_log_in.map(&:to_sym)
+        end
+        
+        def groups_allowed_to_be_created(setting_class = EpiCas::Settings)
+          @groups_allowed_to_be_created ||= setting_class.groups_allowed_to_be_created.map(&:to_sym)
+        end
+        
         def username_whitelisted?(setting_class = EpiCas::Settings)
           (setting_class.username_whitelist || []).member? uid.to_s.downcase
         end
         
-        def type
-          USER_TYPES[dn]
+        def group
+          USER_GROUPS[dn]
         end
     
         def dn

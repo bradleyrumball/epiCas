@@ -7,13 +7,12 @@ describe EpiCas::InstallGenerator do
   destination File.expand_path("../../tmp", __FILE__)
   arguments %w(user)
   
-  # context "Missing pre-requesites" do
-  #   it "throws an error if the user model does not exist" do
-  #     prepare_destination
-  #     lambda{ run_generator }.should raise_error(ArgumentError)
-  #   end
-  # end
-  # 
+  context "Missing pre-requesites" do
+    it "throws an error if the user model does not exist" do
+      prepare_destination
+      lambda{ run_generator }.should raise_error(ArgumentError)
+    end
+  end
   
   context "Pre-requisites met" do
     before(:all) do
