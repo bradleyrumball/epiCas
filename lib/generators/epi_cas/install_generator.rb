@@ -41,7 +41,7 @@ module EpiCas
     
     def update_user_model
       file_path = "app/models/#{file_name}.rb"
-      # raise ArgumentError.new("Could not find #{file_path}. Have you generated it with Devise?") unless File.exist?(file_path)
+      raise ArgumentError.new("Could not find #{file_path}. Have you generated it with Devise?") unless File.exist?(File.join(destination_root, file_path))
       inject_into_file file_path, "extend EpiCas::DeviseHelper", after: "< ActiveRecord::Base\n"
       gsub_file file_path, /:database_authenticatable/, ':"#{auth_method}_authenticatable"'
     end

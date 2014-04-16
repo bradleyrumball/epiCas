@@ -1,9 +1,9 @@
 require 'fast_spec_helper'
 require 'active_support/core_ext/object/blank'
-require 'epi_cas/user_authentications/verifier'
+require 'epi_cas/verifier'
 
-describe EpiCas::UserAuthentications::Verifier do
-  subject { EpiCas::UserAuthentications::Verifier.new('test_user') }
+describe EpiCas::Verifier do
+  subject { EpiCas::Verifier.new('test_user') }
   
   describe '#find_and_verify_and_update_user' do
     let(:user_class) { double }

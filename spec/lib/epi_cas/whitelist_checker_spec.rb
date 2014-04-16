@@ -1,9 +1,9 @@
 require 'fast_spec_helper'
 require 'active_support/core_ext/object/blank'
-require 'epi_cas/user_authentications/whitelist_checker'
+require 'epi_cas/whitelist_checker'
 
-describe EpiCas::UserAuthentications::WhitelistChecker do
-  subject { EpiCas::UserAuthentications::WhitelistChecker.new(raw_dn, 'username') }  
+describe EpiCas::WhitelistChecker do
+  subject { EpiCas::WhitelistChecker.new(raw_dn, 'username') }  
   
   describe 'private methods' do
     let(:raw_dn) { '' }
@@ -47,8 +47,6 @@ describe EpiCas::UserAuthentications::WhitelistChecker do
     specify 'User account can be automatically created if not in the system already' do
       subject.allow_creation?.should be true
     end
-  
-    
   end
   
   context "username not in whitelist and staff / externals can log in" do

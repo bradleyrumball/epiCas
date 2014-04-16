@@ -1,9 +1,9 @@
 require 'fast_spec_helper'
 require 'active_support/core_ext/object/blank'
-require 'epi_cas/user_authentications/ldap_info'
+require 'epi_cas/ldap_info'
 
-describe EpiCas::UserAuthentications::LdapInfo do
-  subject { EpiCas::UserAuthentications::LdapInfo.new('username') }
+describe EpiCas::LdapInfo do
+  subject { EpiCas::LdapInfo.new('username') }
   
   describe '#get_ldap_info' do
     describe 'Getting info from LDAP' do
