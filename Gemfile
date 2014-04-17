@@ -9,7 +9,7 @@ gem 'sheffield_ldap_lookup', '>= 0.0.3'
 
 gem 'devise', '>= 3.2.0'
 gem 'devise_cas_authenticatable', '>= 1.3.5'
-
+gem "devise_ldap_authenticatable", '~> 0.8.0'
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
@@ -18,8 +18,6 @@ group :development do
   gem "bundler"
   gem "jeweler"
   gem "simplecov"
-  
-  gem "devise_ldap_authenticatable"
   
   gem 'debugger'
 end

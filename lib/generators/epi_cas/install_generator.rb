@@ -11,6 +11,10 @@ module EpiCas
       copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml"
     end
     
+    def copy_setting_file
+      copy_file "settings.rb", "models/epi_cas/settings.rb"
+    end
+    
     def install_ldap_lookup
       invoke 'sheffield_ldap_lookup:install'
     end
