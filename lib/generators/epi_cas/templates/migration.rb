@@ -1,4 +1,4 @@
-class AddLdapInformationTo<%= table_name.camelize %> < ActiveRecord::Migration
+class AddLdapInfoTo<%= table_name.camelize %> < ActiveRecord::Migration
   def change
     <%= class_name %>.reset_column_information
     
