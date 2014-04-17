@@ -1,20 +1,20 @@
 defaults: &defaults
   # Allows switching between CAS and LDAP auth per environment
-  auth_method:            cas
+  auth_method: cas
   
   # Stops any new users being created at all
-  read_only:              false
+  read_only:   false
   
   # The title of your application, shown in the title of the log out page
-  cas_application_title: 'Application'
+  app_title:  'Application'
   
   # The title of the CAS service, shown in the log out link on the log out page: "Log out of #{@cas_title}"
-  cas_title:             'Online Services'
+  cas_title:  'Online Services'
   
   # The urls for the CAS services you are using
-  cas_base_url:          'https://login.shef.ac.uk/cas'
-  cas_logout_url:        'https://login.shef.ac.uk/cas/logout'
-  app_logout_url:        'https://localhost:3000/app_logout'
+  cas_base_url:   'https://login.shef.ac.uk/cas'
+  cas_logout_url: 'https://login.shef.ac.uk/cas/logout'
+  app_logout_url: 'https://localhost:3000/app_logout'
   
   # If users in the following groups exist in the app (and CAS), or don't exist in the app but their group is specified in
   # 'groups_allowed_to_be_created' then they will be allowed to log in.
