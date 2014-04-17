@@ -5,6 +5,7 @@ require 'epi_cas/ticket_authenticator'
 require 'epi_cas/verifier'
 require 'epi_cas/whitelist_checker'
 
+require 'epi_cas/engine'
+
 module EpiCas
-  require 'epi_cas/engine'
 end
