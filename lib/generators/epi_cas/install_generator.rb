@@ -23,6 +23,17 @@ module EpiCas
       invoke 'sheffield_ldap_lookup:install'
     end
     
+    def update_application_rb
+      inject_into_file 'config/application.rb', before: /^module \w+/ do
+<<-RUBY
+require 'devise'
+require 'devise_cas_authenticatable'
+require "devise_ldap_authenticatable"
+require 'sheffield_ldap_lookup'
+RUBY
+      end
+    end
+    
     def copy_devise_config
       invoke 'devise:install'
     end

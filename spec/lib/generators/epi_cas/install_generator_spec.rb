@@ -19,6 +19,16 @@ end
       RUBY
     end
 
+    File.open(File.join(destination_root, 'config', 'application.rb'), 'w') do |file|
+      file.write <<-RUBY
+module Moo
+  class Application < Rails::Application
+  end
+end
+      RUBY
+    end
+
+
     File.open(File.join(destination_root, 'config', 'routes.rb'), 'w') do |file|
       file.write <<-RUBY
 TestApp::Application.routes.draw do
