@@ -23,7 +23,7 @@ module EpiCas
     private
       def get_ldap_info(setting_class = Settings)
         begin
-          return get_ldap_info_from_database if setting_class['read_only']
+          return get_ldap_info_from_database if setting_class.read_only
           lookup = ldap_finder.lookup
           return {} if lookup.blank?
           {
