@@ -18,7 +18,7 @@ Add the gem to your Gemfile and bundle:
 	
 Run the install generator passing in the model name:
 
-    bundle exec rails g epi_cas:install MODEL
+    bundle exec rails g epi_cas:install ModelName
     
 ### Configuration
 The configuration file is `config/epi_cas_settings.yml`.
