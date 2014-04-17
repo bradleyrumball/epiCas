@@ -71,10 +71,5 @@ RUBY
     def generate_migration
       invoke 'epi_cas:migration', [name]
     end
-
-    def add_epi_cas_routes
-      route "get '/app_logout' => 'epi_cas/sessions#app_logout'"
-      route "get '/cas_logout' => 'epi_cas/sessions#cas_logout'"
-    end
   end
 end
