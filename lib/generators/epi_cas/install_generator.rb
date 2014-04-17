@@ -26,6 +26,7 @@ module EpiCas
     def update_application_rb
       inject_into_file 'config/application.rb', before: /^module \w+/ do
 <<-RUBY
+# Require gems used by epi_cas
 require 'devise'
 require 'devise_cas_authenticatable'
 require "devise_ldap_authenticatable"
