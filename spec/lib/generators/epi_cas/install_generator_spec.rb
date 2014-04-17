@@ -53,8 +53,8 @@ end
   end
 
   it 'adds the log out routes' do
-    assert_file 'config/routes.rb', /get '\/cas_log_out' => 'epi_cas\/sessions#cas_log_out'/
-    assert_file 'config/routes.rb', /get '\/app_log_out' => 'epi_cas\/sessions#app_log_out'/
+    assert_file 'config/routes.rb', /get '\/cas_logout' => 'epi_cas\/sessions#cas_logout'/
+    assert_file 'config/routes.rb', /get '\/app_logout' => 'epi_cas\/sessions#app_logout'/
   end
 
   it "creates the migration file" do

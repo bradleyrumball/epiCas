@@ -15,6 +15,9 @@ test:
   base: ou=Users
   ssl: false
 
+qa:
+  <<: *unishef
+
 demo:
   <<: *unishef
 

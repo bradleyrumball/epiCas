@@ -73,8 +73,8 @@ RUBY
     end
 
     def add_epi_cas_routes
-      route "get '/app_log_out' => 'epi_cas/sessions#app_log_out'"
-      route "get '/cas_log_out' => 'epi_cas/sessions#cas_log_out'"
+      route "get '/app_logout' => 'epi_cas/sessions#app_logout'"
+      route "get '/cas_logout' => 'epi_cas/sessions#cas_logout'"
     end
   end
 end

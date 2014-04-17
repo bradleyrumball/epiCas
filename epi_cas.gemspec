@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "app/controllers/epi_cas/sessions_controller.rb",
     "app/controllers/epi_cas_controller.rb",
-    "app/views/epi_cas/sessions/app_log_out.html.haml",
+    "app/views/epi_cas/sessions/app_logout.html.haml",
     "config/initializers/devise.rb",
     "config/locales/devise.en.yml",
     "epi_cas.gemspec",

@@ -12,8 +12,8 @@ defaults: &defaults
   cas_title:             'Online Services'
   
   # The urls for the CAS services you are using
-  cas_base_url:          'https://some.url/cas'
-  cas_logout_url:        'https://some.url/cas/logout'
+  cas_base_url:          'https://login.shef.ac.uk/cas'
+  cas_logout_url:        'https://login.shef.ac.uk/cas/logout'
   app_logout_url:        'https://localhost:3000/app_logout'
   
   # If users in the following groups exist in the app (and CAS), or don't exist in the app but their group is specified in
@@ -53,9 +53,13 @@ test:
   <<: *defaults
   auth_method: :ldap
 
+qa:
+  <<: *defaults
+  auth_method: :cas
+
 demo:
   <<: *defaults
-  auth_method: :ldap 
+  auth_method: :cas
 
 production:
   <<: *defaults

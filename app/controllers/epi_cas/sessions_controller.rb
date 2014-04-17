@@ -1,15 +1,15 @@
 class EpiCas::SessionsController < EpiCasController
   
-  def app_log_out
+  def app_logout
     @application_title = 'Incident Contacts'
     @cas_title         = EpiCas::Settings.cas_title
     render layout: false
   end  
   
   # Log out from Portal
-  def cas_log_out
+  def cas_logout
     reset_session
-    redirect_to EpiCas::Settings.cas_log_out_url
+    redirect_to EpiCas::Settings.cas_logout_url
   end
   
 end
