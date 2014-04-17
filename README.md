@@ -14,7 +14,7 @@ A rails app (3.2 or above). The gem will install devise et al for you.
 ### Usage
 Add the gem to your Gemfile and bundle:
 
-	gem 'epi-cas', git: 'git.epigenesys.org.uk:epigenesys/epi-cas.git'
+	gem "epi-cas", git: "git.epigenesys.org.uk:epigenesys/epi-cas.git"
 	
 Run the install generator passing in the model name:
 
@@ -27,6 +27,7 @@ You should change the titles and urls appropriately. You can also specify the gr
 
 ### Customisation
 You can override the following methods in your model to do any additional processing such as settings departments:
+
     def update_ldap_info(ldap_info)
       # etc.
     end
