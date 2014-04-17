@@ -12,15 +12,6 @@ describe EpiCas::MigrationGenerator do
   end
   
   it "creates a migration with the fields required for storing ldap attributes" do
-    assert_migration 'db/migrate/add_ldap_info_to_users.rb' do |content|
-      content.should include 'User.reset_column_information' 
-      
-      content.should include 'add_column :users, :uid, :string'  
-      content.should include 'add_column :users, :mail, :string'
-      content.should include 'add_column :users, :ou, :string'
-      content.should include 'add_column :users, :dn, :string'
-      content.should include 'add_column :users, :sn, :string'
-      content.should include 'add_column :users, :givenname, :string'
-    end      
+    assert_migration 'db/migrate/add_ldap_info_and_clean_up_users.rb'
   end
 end

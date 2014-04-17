@@ -52,13 +52,8 @@ end
     assert_file "config/initializers/devise.rb", /config\.strip_whitespace_keys = \[ :username \]/
   end
 
-  it 'adds the log out routes' do
-    assert_file 'config/routes.rb', /get '\/cas_logout' => 'epi_cas\/sessions#cas_logout'/
-    assert_file 'config/routes.rb', /get '\/app_logout' => 'epi_cas\/sessions#app_logout'/
-  end
-
   it "creates the migration file" do
-    assert_migration 'db/migrate/add_ldap_info_to_users.rb'
+    assert_migration 'db/migrate/add_ldap_info_and_clean_up_users.rb'
   end
   
 end

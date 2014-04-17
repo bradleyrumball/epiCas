@@ -1,22 +1,32 @@
-class AddLdapInfoTo<%= table_name.camelize %> < ActiveRecord::Migration
+class AddLdapInfoAndCleanUp<%= table_name.camelize %> < ActiveRecord::Migration
   def change
-    <%= class_name %>.reset_column_information
     
-    unless <%= class_name %>.column_names.include?('username')
+    <%= class_name %>.reset_column_information
+    existing_columns = <%= class_name %>.column_names
+    
+    unless existing_columns.include?('username')
       add_column :<%= table_name %>, :username, :string 
       add_index :<%= table_name %>, :username
     end
     
-    unless <%= class_name %>.column_names.include?('email')
+    if existing_columns.include?('email')
+      # We don't want the unique index on email which is added by devise by default
+      remove_index :<%= table_name %>, :email
+    else
       add_column :<%= table_name %>, :email, :string 
-      add_index :<%= table_name %>, :email
+    end
+    add_index :<%= table_name %>, :email
+    
+    # Cache the ldap attributes
+    missing_columns = %w(uid mail ou dn sn givenname) - existing_columns
+    missing_columns.each do |column_name|
+      add_column :<%= table_name %>, column_name, :string
     end
     
-    add_column :<%= table_name %>, :uid, :string
-    add_column :<%= table_name %>, :mail, :string
-    add_column :<%= table_name %>, :ou, :string
-    add_column :<%= table_name %>, :dn, :string
-    add_column :<%= table_name %>, :sn, :string
-    add_column :<%= table_name %>, :givenname, :string
+    # Remove devise fields we don't need
+    unnecessary_columns = %w(reset_password_token reset_password_sent_at remember_created_at encrypted_password) & existing_columns
+    unnecessary_columns.each do |column_name|
+      remove_column :<%= table_name %>, column_name
+    end
   end
 end
