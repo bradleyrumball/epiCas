@@ -69,6 +69,10 @@ RUBY
       gsub_file file_path, /devise (:\w+,?\s*)*/, %Q(devise :"\#{auth_method}_authenticatable", :trackable\n)
     end
     
+    def mount_engine
+      route 'mount EpiCas::Engine, at: "/"'
+    end
+    
     def generate_migration
       invoke 'epi_cas:migration', [name]
     end
