@@ -15,6 +15,10 @@ module EpiCas
       copy_file "settings.rb", "app/models/epi_cas/settings.rb"
     end
     
+    def copy_ldap_file
+      copy_file "ldap.yml", "config/ldap.yml"
+    end
+    
     def install_ldap_lookup
       invoke 'sheffield_ldap_lookup:install'
     end
@@ -49,7 +53,7 @@ module EpiCas
     
     def update_user_model
       file_path = "app/models/#{file_name}.rb"
-      inject_into_file file_path, "extend EpiCas::DeviseHelper", after: "< ActiveRecord::Base\n"
+      inject_into_file file_path, "  include EpiCas::DeviseHelper\n", after: "< ActiveRecord::Base\n"
       gsub_file file_path, /:database_authenticatable/, ':"#{auth_method}_authenticatable"'
     end
     

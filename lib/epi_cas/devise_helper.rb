@@ -2,7 +2,7 @@ module EpiCas
   module DeviseHelper
     module ClassMethods
       def auth_method 
-        EpiCas::Settings.epi_cas['auth_method'].to_s.downcase
+        EpiCas::Settings['auth_method'].to_s.downcase
       end
     
       ### This overrides the method in the auth gem to do additional processing:
