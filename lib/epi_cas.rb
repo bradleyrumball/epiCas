@@ -6,5 +6,5 @@ require 'epi_cas/verifier'
 require 'epi_cas/whitelist_checker'
 
 module EpiCas
-  
+  require 'epi_cas/engine'
 end
