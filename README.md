@@ -27,14 +27,12 @@ You should change the titles and urls appropriately. You can also specify the gr
 
 ### Customisation
 You can override the following methods in your model to do any additional processing such as settings departments:
-```ruby
-def update_ldap_info(ldap_info)
-  # etc.
-end
-
-def generate_attributes_from_ldap_info
-  # etc.
-end
-```  
-     
+    def update_ldap_info(ldap_info)
+      # etc.
+    end
+    
+    def generate_attributes_from_ldap_info
+      # etc.
+    end
+ 
 See [devise_helper.rb](lib/epi_cas/devise_helper.rb).
