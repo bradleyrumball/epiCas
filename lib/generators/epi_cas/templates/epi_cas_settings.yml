@@ -2,6 +2,9 @@ defaults: &defaults
   # Allows switching between CAS and LDAP auth per environment
   auth_method:            cas
   
+  # Stops any new users being created at all
+  read_only:              false
+  
   # The title of your application, shown in the title of the log out page
   cas_application_title: 'Application'
   
