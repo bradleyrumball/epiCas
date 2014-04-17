@@ -3,7 +3,14 @@ require 'epi_cas/devise_helper'
 
 describe EpiCas::DeviseHelper do
 
+  class EpiCas::Settings
+    def self.[] arg
+    end
+  end
+
   class MockUser
+    def self.devise *args      
+    end
     include EpiCas::DeviseHelper
     attr_accessor :uid
     attr_accessor :mail

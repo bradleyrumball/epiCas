@@ -62,7 +62,9 @@ RUBY
     def update_user_model
       file_path = "app/models/#{file_name}.rb"
       inject_into_file file_path, "  include EpiCas::DeviseHelper\n", after: "< ActiveRecord::Base\n"
-      gsub_file file_path, /devise (:\w+,?\s*)+/, %Q(devise :"\#{auth_method}_authenticatable", :trackable\n)
+      gsub_file file_path, '# Include default devise modules. Others available are:', ''
+      gsub_file file_path, '# :confirmable, :lockable, :timeoutable and :omniauthable', ''
+      gsub_file file_path, /devise (:\w+,?\s*)+/, ''
     end
     
     def mount_engine

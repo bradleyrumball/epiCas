@@ -1,10 +1,6 @@
 module EpiCas
   module DeviseHelper
     module ClassMethods
-      def auth_method 
-        EpiCas::Settings['auth_method'].to_s.downcase
-      end
-    
       ### This overrides the method in the auth gem to do additional processing:
       # - Get LDAP attributes (givenName, sn, dn, ou, mail) 
       # - OR When LDAP is down get the record from database
@@ -39,6 +35,9 @@ module EpiCas
     end
   
     def self.included(receiver)
+      receiver.class_eval do
+        devise :"#{EpiCas::Settings['auth_method'].to_s.downcase}_authenticatable", :trackable
+      end
       receiver.extend         ClassMethods
       receiver.send :include, InstanceMethods
     end
