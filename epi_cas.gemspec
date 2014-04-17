@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
-  s.authors = ["Ant Nettleship"]
+  s.authors = ["Ant Nettleship", "Shuo Chen"]
   s.date = "2014-04-17"
-  s.description = "TODO: longer description of your gem"
+  s.description = "dds devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views."
   s.email = "a.nettleship@epigenesys.co.uk"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/ant-nettleship/epi_cas"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.2.2"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "A gem for adding CAS authentication to your Rails applications."
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
