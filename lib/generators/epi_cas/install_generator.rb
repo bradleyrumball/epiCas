@@ -12,7 +12,7 @@ module EpiCas
     end
     
     def copy_setting_file
-      copy_file "settings.rb", "models/epi_cas/settings.rb"
+      copy_file "settings.rb", "app/models/epi_cas/settings.rb"
     end
     
     def install_ldap_lookup
