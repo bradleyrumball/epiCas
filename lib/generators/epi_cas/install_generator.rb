@@ -11,10 +11,6 @@ module EpiCas
       copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml"
     end
     
-    def copy_setting_file
-      copy_file "settings.rb", "app/models/epi_cas/settings.rb"
-    end
-    
     def copy_ldap_file
       copy_file "ldap.yml", "config/ldap.yml"
     end
