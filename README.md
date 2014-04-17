@@ -12,6 +12,8 @@ A rails app (3.2 or above). The gem will install devise et al for you.
 
 
 ### Usage
+Remove the config/initializers/devise.rb file if you have one already.
+
 Add the gem to your Gemfile and bundle:
 
     gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
