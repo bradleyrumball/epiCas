@@ -19,7 +19,7 @@ module EpiCas
       end
 
       # This is generally only used where CAS is unavailable, e.g. locally
-      def authenticate_with_ldap(attributes={}, authenticator = EpiCas::LdapAuthenticator)
+      def find_for_ldap_authentication(attributes={}, authenticator = EpiCas::LdapAuthenticator)
         authenticator.new(attributes).authenticate_ldap
       end
     end

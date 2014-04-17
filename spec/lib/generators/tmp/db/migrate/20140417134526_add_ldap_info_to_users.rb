@@ -1,4 +1,4 @@
-class AddLdapInformationToUsers < ActiveRecord::Migration
+class AddLdapInfoToUsers < ActiveRecord::Migration
   def change
     User.reset_column_information
     

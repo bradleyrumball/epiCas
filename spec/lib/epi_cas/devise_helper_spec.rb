@@ -43,12 +43,12 @@ describe EpiCas::DeviseHelper do
     end
   end
   
-  describe '.authenticate_with_ldap' do
+  describe '.find_for_ldap_authentication' do
     it "hands the attributes to the the ldap authenticator" do
       attributes    = double
       authenticator = double
       authenticator.should_receive(:new).with(attributes).and_return(double(authenticate_ldap: nil))
-      subject.class.authenticate_with_ldap(attributes, authenticator)
+      subject.class.find_for_ldap_authentication(attributes, authenticator)
     end
   end
   
