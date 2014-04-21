@@ -3,7 +3,7 @@ require 'active_support/core_ext/object/blank'
 require 'epi_cas/ldap_info'
 
 describe EpiCas::LdapInfo do
-  subject { EpiCas::LdapInfo.new('username') }
+  subject { EpiCas::LdapInfo.new('username', double) }
   
   describe '#get_ldap_info' do
     describe 'Getting info from LDAP' do

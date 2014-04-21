@@ -1,5 +1,5 @@
 module EpiCas
-  class LdapAuthenticator < Struct.new(:attributes)
+  class LdapAuthenticator < Struct.new(:attributes, :user_class)
     
     def authenticate_ldap
       verify_user if attributes[:username].present?
@@ -15,7 +15,7 @@ module EpiCas
       end
       
       def verifier(verifier_class = EpiCas::Verifier)
-        @verifier ||= verifier_class.new(username)
+        @verifier ||= verifier_class.new(username, user_class)
       end
     
       def username

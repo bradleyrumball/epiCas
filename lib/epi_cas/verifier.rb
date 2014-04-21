@@ -1,6 +1,6 @@
 module EpiCas
-  class Verifier < Struct.new(:username)
-    def find_and_verify_and_update_user(user_class = User)
+  class Verifier < Struct.new(:username, :user_class)
+    def find_and_verify_and_update_user
       return unless allow_authentication?
     
       resource = user_class.find_by_username(ldap_info.uid) || user_class.find_by_email(ldap_info.mail)
@@ -8,7 +8,7 @@ module EpiCas
       resource
     end
   
-    def verify_and_build_new_user(user_class = User)
+    def verify_and_build_new_user
       return unless allow_authentication? && whitelist_checker.allow_creation?
     
       resource = user_class.new ldap_info.attributes
@@ -22,7 +22,7 @@ module EpiCas
       end
   
       def ldap_info(klass = LdapInfo)
-        @ldap_info ||= klass.new(username)
+        @ldap_info ||= klass.new(username, user_class)
       end
     
       def whitelist_checker(klass = WhitelistChecker)

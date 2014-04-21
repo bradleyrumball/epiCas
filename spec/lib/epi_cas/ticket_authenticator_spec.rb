@@ -2,7 +2,7 @@ require 'fast_spec_helper'
 require 'epi_cas/ticket_authenticator'
 
 describe EpiCas::TicketAuthenticator do
-  subject { EpiCas::TicketAuthenticator.new(ticket) }
+  subject { EpiCas::TicketAuthenticator.new(ticket, double) }
   
   context "ticket not validated" do
     let(:ticket) { double has_been_validated?: false }

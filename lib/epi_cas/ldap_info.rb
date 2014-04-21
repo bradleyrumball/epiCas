@@ -1,5 +1,6 @@
 module EpiCas
-  class LdapInfo < Struct.new(:username)
+  class LdapInfo < Struct.new(:username, :user_class)
+    
     def attributes
       @attributes ||= get_ldap_info
     end
@@ -40,7 +41,7 @@ module EpiCas
         end
       end
 
-      def get_ldap_info_from_database(model = User)
+      def get_ldap_info_from_database(model = user_class)
         existing_user = model.find_by_username(username)
         return {} unless existing_user
         {

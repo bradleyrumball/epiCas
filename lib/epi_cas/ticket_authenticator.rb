@@ -1,5 +1,6 @@
 module EpiCas
-  class TicketAuthenticator < Struct.new(:ticket)
+  class TicketAuthenticator < Struct.new(:ticket, :user_class)
+    
     def authenticate_ticket
       connection_attempts = 1
       begin
@@ -28,7 +29,7 @@ module EpiCas
       end
     
       def verifier(verifier_class = EpiCas::Verifier)
-        @verifier ||= verifier_class.new(username)
+        @verifier ||= verifier_class.new(username, user_class)
       end
     
       def username

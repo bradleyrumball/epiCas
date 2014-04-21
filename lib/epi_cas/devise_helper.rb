@@ -11,12 +11,12 @@ module EpiCas
       # Update other attributes (e.g. departments / sections) if any of the above 3 were successful and data are changed.
       
       def authenticate_with_cas_ticket(ticket, authenticator = EpiCas::TicketAuthenticator)
-        authenticator.new(ticket).authenticate_ticket
+        authenticator.new(ticket, self).authenticate_ticket
       end
 
       # This is generally only used where CAS is unavailable, e.g. locally
       def find_for_ldap_authentication(attributes={}, authenticator = EpiCas::LdapAuthenticator)
-        authenticator.new(attributes).authenticate_ldap
+        authenticator.new(attributes, self).authenticate_ldap
       end
     end
   
