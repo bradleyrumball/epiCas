@@ -16,7 +16,7 @@ Remove the config/initializers/devise.rb file if you have one already.
 
 Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
 
-   gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
+    gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
 
 Add the gem to your Gemfile and bundle:
 
@@ -45,3 +45,5 @@ You can override the following methods in your model to do any additional proces
     end
  
 See [devise_helper.rb](lib/epi_cas/devise_helper.rb).
+
+You can also override any of the views, have a browse through the source if you need to do this.
