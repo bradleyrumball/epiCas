@@ -20,11 +20,11 @@ module EpiCas
   
     private
       def groups_allowed_to_log_in(setting_class = EpiCas::Settings)
-        @groups_allowed_to_log_in ||= setting_class.groups_allowed_to_log_in.map(&:to_sym)
+        @groups_allowed_to_log_in ||= setting_class.groups_allowed_to_log_in.to_a.map(&:to_sym)
       end
       
       def groups_allowed_to_be_created(setting_class = EpiCas::Settings)
-        @groups_allowed_to_be_created ||= setting_class.groups_allowed_to_be_created.map(&:to_sym)
+        @groups_allowed_to_be_created ||= setting_class.groups_allowed_to_be_created.to_a.map(&:to_sym)
       end
       
       def username_whitelisted?(setting_class = EpiCas::Settings)
