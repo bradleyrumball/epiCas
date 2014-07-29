@@ -4,7 +4,7 @@ module EpiCas
   class InstallGenerator < Rails::Generators::NamedBase
     source_root File.expand_path("../templates", __FILE__)
     include Rails::Generators::ResourceHelpers
-    argument :install_devise, type: :boolean, default: true
+    option :install_devise, type: :boolean, default: true
     
     desc "Adds an initializer, updates the model, and adds required routes."
     
