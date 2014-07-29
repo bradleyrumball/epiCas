@@ -25,6 +25,9 @@ Add the gem to your Gemfile and bundle:
 Run the install generator passing in the model name:
 
     bundle exec rails g epi_cas:install ModelName
+
+**Note:**
+If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
     
 Migrate.
     
