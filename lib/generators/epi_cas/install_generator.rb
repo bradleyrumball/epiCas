@@ -44,6 +44,7 @@ RUBY
       file_path = 'config/initializers/devise.rb'
       
       cas_config = <<-RUBY
+  # ==> CAS configuration
   # Use CAS to log in, location configured in epi_cas_settings.yml
   config.cas_base_url = EpiCas::Settings.cas_base_url
   # Redirect log out to app logout page, which then uses CAS to log out
@@ -52,8 +53,11 @@ RUBY
   config.cas_enable_single_sign_out = true
   # By default, devise_cas_authenticatable will create users.  If you would rather
   # require user records to already exist locally before they can authenticate via
-  # CAS, uncomment the following line
+  # CAS, uncomment the following line:
+  # config.cas_create_user = false
+
       RUBY
+      gsub_file file_path, /config\.mailer_sender = '(.*)'/, "config.mailer_sender = 'My App <no-reply@sheffield.ac.uk>'"
       gsub_file file_path, /(?:# ?)?config\.authentication_keys = \[ :email \]/, 'config.authentication_keys = [ :username ]'
       gsub_file file_path, /config\.case_insensitive_keys = \[ :email \]/, 'config.case_insensitive_keys = [ :username ]'
       gsub_file file_path, /config\.strip_whitespace_keys = \[ :email \]/, 'config.strip_whitespace_keys = [ :username ]'
