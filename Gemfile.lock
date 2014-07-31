@@ -138,7 +138,7 @@ GEM
     rubycas-client (2.3.9)
       activesupport
     settingslogic (2.0.9)
-    sheffield_ldap_lookup (0.0.3)
+    sheffield_ldap_lookup (0.0.4)
       net-ldap
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -180,5 +180,5 @@ DEPENDENCIES
   rdoc
   rspec
   settingslogic (>= 2.0.9)
-  sheffield_ldap_lookup (>= 0.0.3)
+  sheffield_ldap_lookup (>= 0.0.4)
   simplecov

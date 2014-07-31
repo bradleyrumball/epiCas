@@ -5,7 +5,7 @@ source "http://rubygems.org"
 gem 'rails'
 
 gem 'settingslogic', ">= 2.0.9"
-gem 'sheffield_ldap_lookup', '>= 0.0.3'
+gem 'sheffield_ldap_lookup', '>= 0.0.4'
 
 gem 'devise', '>= 3.2.0'
 gem 'devise_cas_authenticatable', '>= 1.3.5'
