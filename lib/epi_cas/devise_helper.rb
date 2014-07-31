@@ -23,7 +23,11 @@ module EpiCas
     module InstanceMethods
       # Override this method in your app if you wish to do somethign special
       def update_ldap_info(ldap_info)
-        assign_attributes(ldap_info)
+        ldap_info.each do |key, value|
+          if self.respond_to?(:"#{key}=")
+            self.send :"#{key}=", value
+          end
+        end
         generate_attributes_from_ldap_info
       end
     

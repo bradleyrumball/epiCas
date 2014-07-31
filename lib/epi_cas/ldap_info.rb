@@ -27,14 +27,20 @@ module EpiCas
           return get_ldap_info_from_database if setting_class.read_only
           lookup = ldap_finder.lookup
           return {} if lookup.blank?
-          {
+          base_info = {
             uid:       lookup['uid'][0].to_s,
             givenname: lookup['givenname'][0].to_s,
             sn:        lookup['sn'][0].to_s,
             mail:      lookup['mail'][0].to_s.downcase,
             dn:        lookup['dn'][0].to_s, 
-            ou:        lookup['ou'][0].to_s
+            ou:        lookup['ou'][0].to_s,
           }
+          
+          base_info[:person_code]  = lookup['shefpersoncode'][0].to_s if lookup['shefpersoncode'].any?
+          base_info[:reg_number]   = lookup['shefregnumber'][0].to_s if lookup['shefregnumber'].any?
+          base_info[:ucard_number] = lookup['sheflibrarynumber'][0].to_s if lookup['sheflibrarynumber'].any?
+          
+          base_info
         rescue
           # If LDAP server is down, fallback to existing records.
           get_ldap_info_from_database
