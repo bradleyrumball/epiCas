@@ -25,7 +25,7 @@
         You have logged out of #{@application_title}.
       
       %p
-        = link_to "Go back to #{@application_title}", main_app.root_path, title: "Go back to #{@application_title}"
+        = link_to "Go back to #{@application_title}", @after_logout_url, title: "Go back to #{@application_title}"
 
       %table{ :style => 'width: 100%; margin-top: 35px;' }
         %tr
