@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Ant Nettleship", "Shuo Chen"]
-  s.date = "2014-07-29"
+  s.date = "2014-07-31"
   s.description = "dds devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views."
   s.email = "a.nettleship@epigenesys.co.uk"
   s.extra_rdoc_files = [
@@ -68,7 +68,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 0"])
       s.add_runtime_dependency(%q<settingslogic>, [">= 2.0.9"])
-      s.add_runtime_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.3"])
+      s.add_runtime_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.4"])
       s.add_runtime_dependency(%q<devise>, [">= 3.2.0"])
       s.add_runtime_dependency(%q<devise_cas_authenticatable>, [">= 1.3.5"])
       s.add_runtime_dependency(%q<devise_ldap_authenticatable>, [">= 0.8.3"])
@@ -81,7 +81,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rails>, [">= 0"])
       s.add_dependency(%q<settingslogic>, [">= 2.0.9"])
-      s.add_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.3"])
+      s.add_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.4"])
       s.add_dependency(%q<devise>, [">= 3.2.0"])
       s.add_dependency(%q<devise_cas_authenticatable>, [">= 1.3.5"])
       s.add_dependency(%q<devise_ldap_authenticatable>, [">= 0.8.3"])
@@ -95,7 +95,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rails>, [">= 0"])
     s.add_dependency(%q<settingslogic>, [">= 2.0.9"])
-    s.add_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.3"])
+    s.add_dependency(%q<sheffield_ldap_lookup>, [">= 0.0.4"])
     s.add_dependency(%q<devise>, [">= 3.2.0"])
     s.add_dependency(%q<devise_cas_authenticatable>, [">= 1.3.5"])
     s.add_dependency(%q<devise_ldap_authenticatable>, [">= 0.8.3"])
