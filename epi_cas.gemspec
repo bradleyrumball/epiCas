@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Ant Nettleship", "Shuo Chen"]
-  s.date = "2014-07-31"
+  s.date = "2014-08-06"
   s.description = "dds devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views."
   s.email = "a.nettleship@epigenesys.co.uk"
   s.extra_rdoc_files = [
