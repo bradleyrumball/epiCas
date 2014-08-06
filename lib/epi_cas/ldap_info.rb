@@ -36,7 +36,7 @@ module EpiCas
             ou:        lookup['ou'][0].to_s,
           }
           
-          base_info[:initial]      = lookup['initial'][0].to_s.upcase if lookup['initial'].any?
+          base_info[:initials]     = lookup['initials'][0].to_s.upcase if lookup['initials'].any?
           base_info[:person_code]  = lookup['shefpersoncode'][0].to_s if lookup['shefpersoncode'].any?
           base_info[:reg_number]   = lookup['shefregnumber'][0].to_s if lookup['shefregnumber'].any?
           base_info[:ucard_number] = lookup['sheflibrarynumber'][0].to_s if lookup['sheflibrarynumber'].any?
