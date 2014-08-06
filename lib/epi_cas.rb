@@ -6,7 +6,6 @@ require 'epi_cas/verifier'
 require 'epi_cas/whitelist_checker'
 
 require 'epi_cas/engine'
-require 'epi_cas/devise_failure_app_override'
 
 module EpiCas
 end
