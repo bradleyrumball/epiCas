@@ -21,6 +21,15 @@ module EpiCas
     end
   
     module InstanceMethods
+      def get_info_from_ldap(ldap_info_class = EpiCas::LdapInfo)
+        lookup_by = self.email.blank? ? self.username : self.email
+        ldap_info = ldap_info_class.new(lookup_by)
+        unless ldap_info.blank?
+          self.update_ldap_info(ldap_info.attributes)
+          self.generate_attributes_from_ldap_info
+        end
+      end
+      
       # Override this method in your app if you wish to do somethign special
       def update_ldap_info(ldap_info)
         ldap_info.each do |key, value|
@@ -40,7 +49,7 @@ module EpiCas
   
     def self.included(receiver)
       receiver.class_eval do
-        devise :"#{EpiCas::Settings['auth_method'].to_s.downcase}_authenticatable", :trackable
+        devise :"#{EpiCas::Settings['auth_method'].to_s.downcase}_authenticatable", :trackable, :timeoutable
       end
       receiver.extend         ClassMethods
       receiver.send :include, InstanceMethods
