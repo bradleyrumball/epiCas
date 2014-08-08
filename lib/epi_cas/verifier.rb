@@ -11,7 +11,8 @@ module EpiCas
     def verify_and_build_new_user
       return unless allow_authentication? && whitelist_checker.allow_creation?
     
-      resource = user_class.new ldap_info.attributes
+      resource = user_class.new
+      resource.update_ldap_info(ldap_info.attributes)
       resource.generate_attributes_from_ldap_info if resource.respond_to?(:generate_attributes_from_ldap_info)
       resource
     end
