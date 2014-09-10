@@ -14,8 +14,8 @@ defaults: &defaults
   # The urls for the CAS services you are using
   cas_base_url:       'https://login.shef.ac.uk/cas'
   cas_logout_url:     'https://login.shef.ac.uk/cas/logout'
-  app_logout_url:     'https://localhost:3000/app_logout'
-  go_back_to_app_url: 'https://localhost:3000/' 
+  app_logout_url:     'http://localhost:3000/app_logout'
+  go_back_to_app_url: 'http://localhost:3000/' 
   
   # If users in the following groups exist in the app (and CAS), or don't exist in the app but their group is specified in
   # 'groups_allowed_to_be_created' then they will be allowed to log in.
