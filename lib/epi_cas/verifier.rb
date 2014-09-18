@@ -4,7 +4,10 @@ module EpiCas
       return unless allow_authentication?
     
       resource = user_class.find_by_username(ldap_info.uid) || user_class.find_by_email(ldap_info.mail)
-      resource.update_ldap_info(ldap_info.attributes) if resource && resource.respond_to?(:update_ldap_info)
+      if resource
+        resource.update_ldap_info(ldap_info.attributes) if resource.respond_to?(:update_ldap_info)
+        return if resource.respond_to?(:active_for_authentication?) && !resource.active_for_authentication?
+      end
       resource
     end
   
