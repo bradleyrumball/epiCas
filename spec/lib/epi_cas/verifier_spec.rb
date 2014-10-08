@@ -46,12 +46,14 @@ describe EpiCas::Verifier do
       before { subject.stub(allow_authentication?: true, ldap_info: double(attributes: {sn: 'User', givenname: 'Test'}), whitelist_checker: double(allow_creation?: true)) }
       
       it "build a new user" do
-        user_class.should_receive(:new).with({sn: 'User', givenname: 'Test'}).and_return(double)
+        user = double
+        user_class.should_receive(:new).and_return(user)
+        user.should_receive(:update_ldap_info).with({sn: 'User', givenname: 'Test'})
         subject.verify_and_build_new_user
       end
       
       it "updates the LDAP info of the user" do
-        user = double
+        user = double(update_ldap_info: nil)
         user_class.stub(new: user)
         user.should_receive(:generate_attributes_from_ldap_info)
         subject.verify_and_build_new_user
