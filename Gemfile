@@ -19,7 +19,7 @@ group :development do
   gem "jeweler"
   gem "simplecov"
   
-  gem 'debugger'
+  gem 'byebug'
 end
 
 group :test do
