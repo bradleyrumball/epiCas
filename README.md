@@ -11,15 +11,15 @@ A gem for adding CAS authentication to your Rails applications.
 A Rails app (3.2 or above). The gem will install Devise et al for you.
 
 ### Usage
-* Remove the ```config/initializers/devise.rb``` file if you have one already.
+1. Remove the ```config/initializers/devise.rb``` file if you have one already.
 
-* Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
+2. Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
 
     ```
     gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
     ```
 
-* Add the gem to your Gemfile:
+3. Add the gem to your Gemfile:
 
     **Genesys/Hut/Crossover students:**
     ```
@@ -31,13 +31,13 @@ A Rails app (3.2 or above). The gem will install Devise et al for you.
     gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
     ```
 
-* Install the new gems:
+4. Install the new gems:
 
     ```
     bundle install
     ```
 
-* Run the install generator passing in the model name:
+5. Run the install generator passing in the model name:
 
     ```
     bundle exec rails g epi_cas:install ModelName
@@ -46,7 +46,7 @@ A Rails app (3.2 or above). The gem will install Devise et al for you.
     **Note:**
     If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
     
-* Migrate the database:
+6. Migrate the database:
 
     ```
     bundle exec rake db:migrate
