@@ -11,46 +11,46 @@ A gem for adding CAS authentication to your Rails applications.
 A Rails app (3.2 or above). The gem will install Devise et al for you.
 
 ### Usage
-1. Remove the ```config/initializers/devise.rb``` file if you have one already.
+* Remove the ```config/initializers/devise.rb``` file if you have one already.
 
-2. Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
+* Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
 
-  ```
-  gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
-  ```
+    ```
+    gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
+    ```
 
-3. Add the gem to your Gemfile:
+* Add the gem to your Gemfile:
 
-  **Genesys/Hut/Crossover students:**
-  ```
-  gem "epi_cas", git: "git@git.genesys-solutions.org.uk:gems/epi_cas.git"
-  ```
+    **Genesys/Hut/Crossover students:**
+    ```
+    gem "epi_cas", git: "git@git.genesys-solutions.org.uk:gems/epi_cas.git"
+    ```
 
-  **epiGenesys staff:**
-  ```
-  gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
-  ```
+    **epiGenesys staff:**
+    ```
+    gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
+    ```
 
-4. Install the new gems:
+* Install the new gems:
 
-  ```
-  bundle install
-  ```
+    ```
+    bundle install
+    ```
 
-5. Run the install generator passing in the model name:
+* Run the install generator passing in the model name:
 
-  ```
-  bundle exec rails g epi_cas:install ModelName
-  ```
+    ```
+    bundle exec rails g epi_cas:install ModelName
+    ```
 
-  **Note:**
-  If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
+    **Note:**
+    If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
     
-6. Migrate the database:
+* Migrate the database:
 
-  ```
-  bundle exec rake db:migrate
-  ```
+    ```
+    bundle exec rake db:migrate
+    ```
     
 ### Configuration
 The configuration file is `config/epi_cas_settings.yml`.
