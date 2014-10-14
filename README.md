@@ -4,32 +4,53 @@
 ### Description
 A gem for adding CAS authentication to your Rails applications.
 
-* Adds devise to your app and installs (if it's not there already)
-* Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views  
+* Adds Devise to your app and installs it (if it's not there already)
+* Provides a generator to create a model (if not already there) and adds the appropriate migrations, routes, and views
 
 ### Prerequisites
-A rails app (3.2 or above). The gem will install devise et al for you.
-
+A Rails app (3.2 or above). The gem will install Devise et al for you.
 
 ### Usage
-Remove the config/initializers/devise.rb file if you have one already.
+1. Remove the ```config/initializers/devise.rb``` file if you have one already.
 
-Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
+2. Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
 
-    gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
+  ```
+  gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
+  ```
 
-Add the gem to your Gemfile and bundle:
+3. Add the gem to your Gemfile:
 
-    gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
+  **Genesys/Hut/Crossover students:**
+  ```
+  gem "epi_cas", git: "git@git.genesys-solutions.org.uk:gems/epi_cas.git"
+  ```
 
-Run the install generator passing in the model name:
+  **epiGenesys staff:**
+  ```
+  gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
+  ```
 
-    bundle exec rails g epi_cas:install ModelName
+4. Install the new gems:
 
-**Note:**
-If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
+  ```
+  bundle install
+  ```
+
+5. Run the install generator passing in the model name:
+
+  ```
+  bundle exec rails g epi_cas:install ModelName
+  ```
+
+  **Note:**
+  If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
     
-Migrate.
+6. Migrate the database:
+
+  ```
+  bundle exec rake db:migrate
+  ```
     
 ### Configuration
 The configuration file is `config/epi_cas_settings.yml`.
