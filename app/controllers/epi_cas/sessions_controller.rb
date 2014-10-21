@@ -1,6 +1,6 @@
 module EpiCas
   class SessionsController < ::ApplicationController
-  
+    skip_authorization_check if defined?('skip_authorization_check')
     def app_logout
       @application_title = EpiCas::Settings.app_title
       @cas_title         = EpiCas::Settings.cas_title
