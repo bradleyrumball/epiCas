@@ -8,6 +8,7 @@ module EpiCas
     private
       def verify_user
         resource = verifier.find_and_verify_and_update_user || verifier.verify_and_build_new_user
+        return if resource.respond_to?(:active_for_authentication?) && !resource.active_for_authentication?
         if resource.try(:valid_ldap_authentication?, attributes[:password])
           resource.save if resource.changed?
           resource
