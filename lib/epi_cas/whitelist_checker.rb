@@ -1,5 +1,5 @@
 module EpiCas
-  class WhitelistChecker < Struct.new(:raw_dn, :uid)
+  class WhitelistChecker < Struct.new(:raw_dn, :uid, :user_class)
     USER_GROUPS = {
       'ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                                 => :staff,
       'ou=honorary,ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                     => :staff_honorary,
@@ -19,16 +19,16 @@ module EpiCas
     end
   
     private
-      def groups_allowed_to_log_in(setting_class = EpiCas::Settings)
-        @groups_allowed_to_log_in ||= setting_class.groups_allowed_to_log_in.to_a.map(&:to_sym)
+      def groups_allowed_to_log_in
+        @groups_allowed_to_log_in ||= settings(:groups_allowed_to_log_in).to_a.map(&:to_sym)
       end
       
-      def groups_allowed_to_be_created(setting_class = EpiCas::Settings)
-        @groups_allowed_to_be_created ||= setting_class.groups_allowed_to_be_created.to_a.map(&:to_sym)
+      def groups_allowed_to_be_created
+        @groups_allowed_to_be_created ||= settings(:groups_allowed_to_be_created).to_a.map(&:to_sym)
       end
       
-      def username_whitelisted?(setting_class = EpiCas::Settings)
-        (setting_class.username_whitelist || []).member? uid.to_s.downcase
+      def username_whitelisted?
+        (settings(:username_whitelist) || []).member? uid.to_s.downcase
       end
       
       def group
@@ -37,6 +37,14 @@ module EpiCas
   
       def dn
         @dn ||= raw_dn[/ou=.*dc=uk/].to_s.downcase
+      end
+      
+      def settings(setting_name, setting_class = EpiCas::Settings)
+         class_specific_settings[setting_name] || setting_class[setting_class]
+      end
+      
+      def class_specific_settings(setting_class = EpiCas::Settings)
+        @class_specific_settings ||= ((setting_class.class_specific_settings || {})[user_class.to_s]) || {}
       end
   end
 end
