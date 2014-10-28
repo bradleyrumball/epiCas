@@ -10,26 +10,26 @@ describe EpiCas::WhitelistChecker do
     
     describe '#groups_allowed_to_log_in' do
       it "converts the user group to symbols" do
-        allow(subject).to receive(:settings).with(:groups_allowed_to_log_in).and_return(['staff', 'external'])
+        allow(subject).to receive(:settings).with('groups_allowed_to_log_in').and_return(['staff', 'external'])
         subject.send(:groups_allowed_to_log_in).should == [:staff, :external]
       end
     end
     
     describe '#groups_allowed_to_be_created' do
       it "converts the user group to symbols" do
-        allow(subject).to receive(:settings).with(:groups_allowed_to_be_created).and_return(['staff', 'external'])
+        allow(subject).to receive(:settings).with('groups_allowed_to_be_created').and_return(['staff', 'external'])
         subject.send(:groups_allowed_to_be_created).should == [:staff, :external]
       end
     end
     
     describe '#username_whitelisted?' do
       it "returns true if the username is whitelisted" do
-        allow(subject).to receive(:settings).with(:username_whitelist).and_return(['username'])
+        allow(subject).to receive(:settings).with('username_whitelist').and_return(['username'])
         subject.send(:username_whitelisted?).should be true
       end
       
       it "returns false if the username is not whitelisted" do
-        allow(subject).to receive(:settings).with(:username_whitelist).and_return(['another_username'])
+        allow(subject).to receive(:settings).with('username_whitelist').and_return(['another_username'])
         subject.send(:username_whitelisted?).should be false
       end
     end
