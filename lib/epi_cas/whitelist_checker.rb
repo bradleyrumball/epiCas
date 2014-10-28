@@ -44,7 +44,7 @@ module EpiCas
       end
       
       def class_specific_settings(setting_class = EpiCas::Settings)
-        @class_specific_settings ||= ((setting_class.class_specific_settings || {})[user_class.to_s]) || {}
+        @class_specific_settings ||= ((setting_class[:class_specific_settings] || {})[user_class.to_s]) || {}
       end
   end
 end
