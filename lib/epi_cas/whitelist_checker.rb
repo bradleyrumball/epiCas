@@ -2,12 +2,14 @@ module EpiCas
   class WhitelistChecker < Struct.new(:raw_dn, :uid, :user_class)
     USER_GROUPS = {
       'ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                                 => :staff,
+      'ou=retired,ou=users,dc=sheffield,dc=ac,dc=uk'                               => :staff_retired,
       'ou=honorary,ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                     => :staff_honorary,
       'ou=visiting,ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                     => :staff_visiting,
       'ou=external,ou=users,dc=sheffield,dc=ac,dc=uk'                              => :external,
       'ou=research,ou=postgraduates,ou=students,ou=users,dc=sheffield,dc=ac,dc=uk' => :student_pg_research,
       'ou=taught,ou=postgraduates,ou=students,ou=users,dc=sheffield,dc=ac,dc=uk'   => :student_pg_taught,
-      'ou=undergraduates,ou=students,ou=users,dc=sheffield,dc=ac,dc=uk'            => :student_undergraduate
+      'ou=undergraduates,ou=students,ou=users,dc=sheffield,dc=ac,dc=uk'            => :student_undergraduate,
+      'ou=roles,ou=users,dc=sheffield,dc=ac,dc=uk'                                 => :role
     } 
   
     def allow_authentication?
