@@ -15,14 +15,7 @@ describe EpiCas::Verifier do
         user_class.should_receive(:find_by_username).with('test_user').and_return(double)
         subject.find_and_verify_and_update_user
       end
-      
-      it "finds the user by email if a user with the given username" do
-        subject.stub(ldap_info: double(uid: 'test_user', mail: 'test@user.com'))
-        user_class.stub(find_by_username: nil)
-        user_class.should_receive(:find_by_email).with('test@user.com').and_return(double)
-        subject.find_and_verify_and_update_user
-      end
-      
+            
       it "updates the LDAP info of the user if a user can be found" do
         subject.stub(ldap_info: double(uid: 'test_user', attributes: {sn: 'User', givenname: 'Test'}))
         user = double

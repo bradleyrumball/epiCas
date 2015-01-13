@@ -3,7 +3,7 @@ module EpiCas
     def find_and_verify_and_update_user
       return unless allow_authentication?
     
-      resource = user_class.find_by_username(ldap_info.uid) || user_class.find_by_email(ldap_info.mail)
+      resource = user_class.find_by_username(ldap_info.uid)
       resource.update_ldap_info(ldap_info.attributes) if resource && resource.respond_to?(:update_ldap_info)
       resource
     end
