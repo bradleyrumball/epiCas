@@ -1,5 +1,5 @@
 module EpiCas
-  class WhitelistChecker < Struct.new(:raw_dn, :uid, :user_class)
+  class WhitelistChecker < Struct.new(:raw_dn, :uid, :ou, :user_class)
     USER_GROUPS = {
       'ou=staff,ou=users,dc=sheffield,dc=ac,dc=uk'                                 => :staff,
       'ou=retired,ou=users,dc=sheffield,dc=ac,dc=uk'                               => :staff_retired,
@@ -13,11 +13,11 @@ module EpiCas
     } 
   
     def allow_authentication?
-      username_whitelisted? || groups_allowed_to_log_in.member?(group)
+      (username_whitelisted? || groups_allowed_to_log_in.member?(group)) && ou_whitelisted?
     end
   
     def allow_creation?
-      username_whitelisted? || groups_allowed_to_be_created.member?(group)
+      (username_whitelisted? || groups_allowed_to_be_created.member?(group)) && ou_whitelisted?
     end
   
     private
@@ -33,6 +33,12 @@ module EpiCas
         (settings('username_whitelist') || []).member? uid.to_s.downcase
       end
       
+      def ou_whitelisted?
+        whitelist = (settings('department_code_whitelist') || [])
+        return true if whitelist.blank?
+        whitelist.include? ou
+      end
+      
       def group
         USER_GROUPS[dn]
       end
@@ -42,7 +48,7 @@ module EpiCas
       end
       
       def settings(setting_name, setting_class = EpiCas::Settings)
-         class_specific_settings[setting_name] || setting_class[setting_name]
+        class_specific_settings[setting_name] || setting_class[setting_name]
       end
       
       def class_specific_settings(setting_class = EpiCas::Settings)
