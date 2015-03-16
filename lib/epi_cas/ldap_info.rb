@@ -16,6 +16,10 @@ module EpiCas
     def dn
       attributes[:dn]
     end
+    
+    def ou
+      attributes[:ou]
+    end
 
     def found?
       !attributes.empty?
