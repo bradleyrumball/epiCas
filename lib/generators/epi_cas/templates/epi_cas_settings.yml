@@ -47,10 +47,14 @@ defaults: &defaults
     # - etc
   
   # Departments that allowed access. Leave blank if users from all departments can access the system.
-  department_code_whitelist:
+  departments_allowed_to_log_in:
     # - COM
     # - etc
   
+  departments_allowed_to_be_created:
+    # - COM
+    # - etc
+    
 development:
   <<: *defaults
   auth_method: :ldap

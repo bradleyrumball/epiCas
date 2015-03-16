@@ -13,11 +13,11 @@ module EpiCas
     } 
   
     def allow_authentication?
-      (username_whitelisted? || groups_allowed_to_log_in.member?(group)) && ou_whitelisted?
+      username_whitelisted? || (groups_allowed_to_log_in.member?(group) && department_allowed_to_log_in?)
     end
   
     def allow_creation?
-      (username_whitelisted? || groups_allowed_to_be_created.member?(group)) && ou_whitelisted?
+      username_whitelisted? || (groups_allowed_to_be_created.member?(group) && department_allowed_to_be_created?)
     end
   
     private
@@ -33,8 +33,14 @@ module EpiCas
         (settings('username_whitelist') || []).member? uid.to_s.downcase
       end
       
-      def ou_whitelisted?
-        whitelist = (settings('department_code_whitelist') || [])
+      def department_allowed_to_log_in?
+        whitelist = (settings('departments_allowed_to_log_in') || [])
+        return true if whitelist.blank?
+        whitelist.include? ou
+      end
+      
+      def department_allowed_to_be_created?
+        whitelist = (settings('departments_allowed_to_be_created') || [])
         return true if whitelist.blank?
         whitelist.include? ou
       end
