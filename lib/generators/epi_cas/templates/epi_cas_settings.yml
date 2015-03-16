@@ -1,60 +1,73 @@
 defaults: &defaults
   # Allows switching between CAS and LDAP auth per environment
   auth_method: cas
-  
+
   # Stops any users being created or updated
   read_only:   false
-  
+
   # The title of your application, shown in the title of the log out page
   app_title:  'Application'
-  
+
   # The title of the CAS service, shown in the log out link on the log out page: "Log out of #{@cas_title}"
   cas_title:  'Online Services'
-  
+
   # The urls for the CAS services you are using
   cas_base_url:       'https://login.shef.ac.uk/cas'
   cas_logout_url:     'https://login.shef.ac.uk/cas/logout'
   app_logout_url:     'http://localhost:3000/app_logout'
   go_back_to_app_url: 'http://localhost:3000/' 
-  
-  # If users in the following groups exist in the app (and CAS), or don't exist in the app but their group is specified in
-  # 'groups_allowed_to_be_created' then they will be allowed to log in.
-  # Comment/uncomment as necessary.
-  groups_allowed_to_log_in: 
+
+  # Users in the following groups can log in (comment/uncomment as necessary).
+  # Users must also be in a department that is allowed to log in (see departments_allowed_to_log_in).
+  # Users must also exist in the app, or be allowed to be created automatically in the app
+  # (see groups_allowed_to_be_created and departments_allowed_to_be_created).
+  groups_allowed_to_log_in:
     - staff
     - staff_honorary
     - staff_visiting
-    - external
+    # - external
     # - student_pg_research
     # - student_pg_taught
     # - student_undergraduate
+    # - staff_retired
+    # - role
 
-  # If users in the following groups don't already exist in the app, they will be allowed to log in and created automatically. 
-  # Comment/uncomment as necessary.
-  groups_allowed_to_be_created: 
+  # Users in the following groups are created automatically in the app when logging in (comment/uncomment as necessary).
+  # Users must also be in a department that is allowed to be created automatically in the app (see departments_allowed_to_be_created).
+  groups_allowed_to_be_created:
     - staff
     - staff_honorary
     - staff_visiting
-    - external
+    # - external
     # - student_pg_research
     # - student_pg_taught
     # - student_undergraduate
+    # - staff_retired
+    # - role
 
-  # Usernames allowed access regardless of their group and whether or not they are already in the app.
+  # Users in the following departments can log in (specify CiCS department codes; leave empty for all).
+  # Users must also be in a group that is allowed to log in (see groups_allowed_to_log_in).
+  # Users must also exist in the app, or be allowed to be created automatically in the app
+  # (see groups_allowed_to_be_created and departments_allowed_to_be_created).
+  departments_allowed_to_log_in:
+    # - EPG
+    # - COM
+    # - etc
+
+  # Users in the following departments are created automatically in the app when logging in (specify CiCS department codes; leave empty for all).
+  # Users must also be in a group that is allowed to be created automatically in the app (see groups_allowed_to_be_created).
+  departments_allowed_to_be_created:
+    # - EPG
+    # - COM
+    # - etc
+
+  # Usernames specified here can always log in and are always automatically created in the app when logging in,
+  # regardless of their group and department.
   username_whitelist:
     # - user1
     # - user2
     # - etc
-  
-  # Departments that allowed access. Leave blank if users from all departments can access the system.
-  departments_allowed_to_log_in:
-    # - COM
-    # - etc
-  
-  departments_allowed_to_be_created:
-    # - COM
-    # - etc
-    
+
 development:
   <<: *defaults
   auth_method: :ldap
