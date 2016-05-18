@@ -24,7 +24,7 @@ module EpiCas
       def get_info_from_ldap(ldap_info_class = EpiCas::LdapInfo)
         lookup_by = self.username.blank? ? self.email : self.username
         ldap_info = ldap_info_class.new(lookup_by, self.class)
-        unless ldap_info.blank?
+        unless ldap_info.attributes.blank?
           self.update_ldap_info(ldap_info.attributes)
           self.generate_attributes_from_ldap_info
         end
