@@ -13,7 +13,7 @@ describe EpiCas::InstallGenerator do
 
     File.open(File.join(destination_root, 'app', 'models', 'user.rb'), 'w') do |file|
       file.write <<-RUBY
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable
 end
       RUBY
@@ -42,6 +42,11 @@ end
     assert_file "config/epi_cas_settings.yml"
   end
 
+  it "updates the model to use epi_cas" do
+    assert_file "app/models/user.rb", /include EpiCas::DeviseHelper/
+    assert_file "app/models/user.rb", /^((?!devise).)*/
+  end
+
   it "updates the devise config file" do
     assert_file "config/initializers/devise.rb", /config\.cas_base_url = EpiCas::Settings.cas_base_url/
     assert_file "config/initializers/devise.rb", /config\.cas_logout_url = EpiCas::Settings.app_logout_url/
@@ -55,5 +60,5 @@ end
   it "creates the migration file" do
     assert_migration 'db/migrate/add_ldap_info_and_clean_up_users.rb'
   end
-  
+
 end
