@@ -18,9 +18,9 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/ant-nettleship/epi_cas"
   gem.license = "MIT"
   gem.summary = %Q{A gem for adding CAS authentication to your Rails applications.}
-  gem.description = %Q{dds devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views.}
-  gem.email = "a.nettleship@epigenesys.co.uk"
-  gem.authors = ["Ant Nettleship", "Shuo Chen"]
+  gem.description = %Q{Adds Devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views.}
+  gem.email = "info@epigenesys.org.uk"
+  gem.authors = ["Ant Nettleship", "James Gregory", "Shuo Chen"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

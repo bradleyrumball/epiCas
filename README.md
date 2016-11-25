@@ -8,22 +8,18 @@ A gem for adding CAS authentication to your Rails applications.
 * Provides a generator to create a model (if not already there) and adds the appropriate migrations, routes, and views
 
 ### Prerequisites
-A Rails app (3.2 or above). The gem will install Devise et al for you.
+
+* A Rails application (3.2 or above)
 
 ### Usage
-1. Remove the ```config/initializers/devise.rb``` file if you have one already.
 
-2. Add the devise ldap gem to your Gemfile (temporary until it gets put on rubygems):
+1. Set up a project using the provided Rails template.
 
+2. Add the gem to your Gemfile:
+
+    **Computer Science students:**
     ```
-    gem 'devise_ldap_authenticatable', github: 'cschiewek/devise_ldap_authenticatable'
-    ```
-
-3. Add the gem to your Gemfile:
-
-    **Genesys/Hut/Crossover students:**
-    ```
-    gem "epi_cas", git: "git@git.genesys-solutions.org.uk:gems/epi_cas.git"
+    gem "epi_cas", git: "git@git.shefcompsci.org.uk:gems/epi_cas.git"
     ```
 
     **epiGenesys staff:**
@@ -31,31 +27,28 @@ A Rails app (3.2 or above). The gem will install Devise et al for you.
     gem "epi_cas", git: "git@git.epigenesys.org.uk:epigenesys/epi-cas.git"
     ```
 
-4. Install the new gems:
+3. Install the new gems:
 
     ```
     bundle install
     ```
 
-5. Run the install generator passing in the model name:
+4. Run the install generator, passing in the relevant model name (usually User):
 
     ```
     bundle exec rails g epi_cas:install ModelName
     ```
 
-    **Note:**
-    If the project has already been Devise enabled (as the Rails template has), you can add `--no-devise-install` to disable re-running the `devise:install` task.
-    
-6. Migrate the database:
+5. Migrate the database:
 
     ```
-    bundle exec rake db:migrate
+    bundle exec rails db:migrate
     ```
-    
+
 ### Configuration
 The configuration file is `config/epi_cas_settings.yml`.
 
-You should change the titles and urls appropriately. You can also specify the groups of users allowed access to your system.
+You should change the titles and URLs as appropriate. You can also specify the groups of users allowed access to your system.
 
 ### Customisation
 You can override the following methods in your model to do any additional processing such as settings departments:
@@ -63,11 +56,11 @@ You can override the following methods in your model to do any additional proces
     def update_ldap_info(ldap_info)
       # etc.
     end
-    
+
     def generate_attributes_from_ldap_info
       # etc.
     end
- 
+
 See [devise_helper.rb](lib/epi_cas/devise_helper.rb).
 
 You can also override any of the views, have a browse through the source if you need to do this.
