@@ -5,7 +5,7 @@ require 'generators/epi_cas/install_generator'
 
 describe EpiCas::InstallGenerator do
   destination File.expand_path("../../tmp", __FILE__)
-  arguments %w(user)
+  arguments %w(User --devise-install)
   before(:all) do
     prepare_destination
     mkdir_p(File.join(destination_root, 'app', 'models'))

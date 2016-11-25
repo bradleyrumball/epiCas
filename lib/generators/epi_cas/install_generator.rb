@@ -4,12 +4,12 @@ module EpiCas
   class InstallGenerator < Rails::Generators::NamedBase
     source_root File.expand_path("../templates", __FILE__)
     include Rails::Generators::ResourceHelpers
-    class_option :devise_install, type: :boolean, default: true, desc: 'Run the "devise:install" task - not required if Devise has already been installed'
+    class_option :devise_install, type: :boolean, default: false, desc: 'Run the "devise:install" task - not required if Devise has already been installed'
 
     desc "Adds an initializer, updates the model, and adds required routes."
 
     def create_config
-      copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml"
+      copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml", skip: true
     end
 
     def copy_ldap_file
