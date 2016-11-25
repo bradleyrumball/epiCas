@@ -1,0 +1,10 @@
+image: epigenesys/rails
+  
+cache:
+  key: 'epi-cas'
+  paths:
+    - vendor/gems
+rspec:
+  script:
+    - bundle check --path vendor/gems || bundle install --path vendor/gems --jobs $(nproc)
+    - bundle exec rake spec
