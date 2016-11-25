@@ -9,7 +9,7 @@ module EpiCas
     desc "Adds an initializer, updates the model, and adds required routes."
 
     def create_config
-      copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml", skip: true
+      copy_file "epi_cas_settings.yml", "config/epi_cas_settings.yml"
     end
 
     def copy_ldap_file
@@ -58,9 +58,9 @@ RUBY
 
       RUBY
       gsub_file file_path, /config\.mailer_sender = '(.*)'/, "config.mailer_sender = 'My App <no-reply@sheffield.ac.uk>'"
-      gsub_file file_path, /(?:# ?)?config\.authentication_keys = \[ :email \]/, 'config.authentication_keys = [ :username ]'
-      gsub_file file_path, /config\.case_insensitive_keys = \[ :email \]/, 'config.case_insensitive_keys = [ :username ]'
-      gsub_file file_path, /config\.strip_whitespace_keys = \[ :email \]/, 'config.strip_whitespace_keys = [ :username ]'
+      gsub_file file_path, /(?:# ?)?config\.authentication_keys = \[([^\]]+)\]/, 'config.authentication_keys = [ :username ]'
+      gsub_file file_path, /config\.case_insensitive_keys = \[([^\]]+)\]/, 'config.case_insensitive_keys = [ :username ]'
+      gsub_file file_path, /config\.strip_whitespace_keys = \[([^\]]+)\]/, 'config.strip_whitespace_keys = [ :username ]'
       inject_into_file file_path, cas_config, after: "Devise.setup do |config|\n"
     end
 
