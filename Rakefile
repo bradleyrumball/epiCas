@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "epi_cas"
-  gem.homepage = "http://github.com/ant-nettleship/epi_cas"
+  gem.homepage = "https://www.epigenesys.org.uk/"
   gem.license = "MIT"
   gem.summary = %Q{A gem for adding CAS authentication to your Rails applications.}
   gem.description = %Q{Adds Devise to your app and installs (if it's not there already). Provides a generator to create a model (if not already there) add the appropriate migrations, routes, and views.}

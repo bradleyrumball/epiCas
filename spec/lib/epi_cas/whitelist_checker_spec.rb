@@ -114,13 +114,24 @@ describe EpiCas::WhitelistChecker do
       end
     end
 
-    context 'Undergrade Student' do
+    context 'Undergraduate Student' do
       let(:raw_dn) { "uid=testuser,ou=Undergraduates,ou=Students,ou=Users,dc=sheffield,dc=ac,dc=uk"}
-      specify 'Undergrade Student cannot log in' do
+      specify 'Undergraduate Student cannot log in' do
         expect(subject.allow_authentication?).to be_falsey
       end
 
-      specify 'Undergrade Student Student account cannot be automatically created if not in the system already' do
+      specify 'Undergraduate Student Student account cannot be automatically created if not in the system already' do
+        expect(subject.allow_creation?).to be_falsey
+      end
+    end
+
+    context 'Public user' do
+      let(:raw_dn) { "uid=testuser,ou=Public,ou=Users,dc=sheffield,dc=ac,dc=uk"}
+      specify 'Public user cannot log in' do
+        expect(subject.allow_authentication?).to be_falsey
+      end
+
+      specify 'Public user cannot be automatically created if not in the system already' do
         expect(subject.allow_creation?).to be_falsey
       end
     end
