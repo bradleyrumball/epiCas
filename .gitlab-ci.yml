@@ -1,10 +1,22 @@
 image: epigenesys/rails
-  
+
+stages:
+  - test
+
 cache:
+  # Change this to the name of your project
   key: 'epi-cas'
   paths:
+    - .bundle
     - vendor/gems
+
+before_script:
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+
 rspec:
+  stage: test
+
   script:
     - bundle check --path vendor/gems || bundle install --path vendor/gems --jobs $(nproc)
-    - bundle exec rake spec
+    - bundle exec rake
