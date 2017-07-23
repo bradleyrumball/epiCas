@@ -14,5 +14,5 @@ rspec:
   stage: test
 
   script:
-    - bundle check --path vendor/gems || bundle install --path vendor/gems --jobs $(nproc)
+    - bundle check --path vendor/gems || (bundle install --path vendor/gems --jobs $(nproc) && bundle clean)
     - bundle exec rake
