@@ -6,7 +6,7 @@
 
 Gem::Specification.new do |s|
   s.name = "epi_cas".freeze
-  s.version = "1.3.18"
+  s.version = File.read('VERSION')
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -108,4 +108,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<byebug>.freeze, [">= 0"])
   end
 end
-
